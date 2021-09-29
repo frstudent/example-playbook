@@ -12,7 +12,7 @@ node("static_ansible"){
     stage("Run playbook"){
         if (secret_check){
             withCredentials([usernamePassword(credentialsId: 'a0f1679b-ac18-40c0-bfb8-7cbd55f74abb', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                 echo $PASSWORD
+                 echo '$PASSWORD'
                  sh 'ansible-playbook site.yml -i inventory/prod.yml --extra-vars ansible_sudo_pass=$PASSWORD'
            }
         }
