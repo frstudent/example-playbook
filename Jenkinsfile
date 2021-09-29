@@ -4,7 +4,7 @@ node("ansible_docker"){
         echo "Release: ansible_docker"
     }
     stage("Git checkout"){
-        git credentialsId: 'cb0b173c-2e3b-466f-b570-cacc58d05021', url: 'git@github.com:aragastmatb/example-playbook.git'
+        git credentialsId: 'cb0b173c-2e3b-466f-b570-cacc58d05021', url: 'git@github.com:frstudent/example-playbook.git'
     }
     stage("Check ssh key"){
         secret_check=true
