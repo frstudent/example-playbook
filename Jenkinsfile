@@ -7,7 +7,9 @@ node("ansible_docker"){
     }
     stage("Run playbook"){
         if (secret_check){
-            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+            withCredentials([usernamePassword(credentialsId: 'mycreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                 sh 'ansible-playbook site.yml -i inventory/prod.yml --extra-vars ansible_sudo_pass=$PASSWORD'
+           }
         }
         else{
             echo 'no more keys'
